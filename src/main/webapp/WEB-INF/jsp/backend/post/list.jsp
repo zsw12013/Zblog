@@ -41,7 +41,7 @@
                      <span class="hide"><i class="post-ps">${post.pstatus}</i>
                           <i class="post-cs">${post.cstatus}</i><i class="post-tags">${z:join(post.tags,',')}</i></span>
                      <div class="row-action">
-                       <span><a href="#">编辑</a>&nbsp;|&nbsp;</span>
+                       <span><a href="#" onclick="zblog.post.edit('${post.id}')">编辑</a>&nbsp;|&nbsp;</span>
                        <span><a href="#" onclick="zblog.post.fastedit('${post.id}')">快速编辑</a>&nbsp;|&nbsp;</span>
                        <span><a href="#">移到回收站</a>&nbsp;|&nbsp;</span>
                        <span><a target="_blank" href="${g.domain}/pages/${post.id}">查看</a></span>

@@ -5,9 +5,11 @@
 <html>
  <head>
   <jsp:include page="../common/bootstrap.jsp" flush="false" />
-  <script type="text/javascript" src="${g.domain}/resource/ueditor-1.4.3/ueditor.config.js"></script>
+ <%--  <script type="text/javascript" src="${g.domain}/resource/ueditor-1.4.3/ueditor.config.js"></script>
   <script type="text/javascript" src="${g.domain}/resource/ueditor-1.4.3/ueditor.all.js"></script>
-  <script type="text/javascript" src="${g.domain}/resource/epiceditor-0.2.3/js/epiceditor.min.js"></script>
+  <script type="text/javascript" src="${g.domain}/resource/epiceditor-0.2.3/js/epiceditor.min.js"></script> --%>
+   <link rel="stylesheet" href="${g.domain}/resource/wangEditor-2.1.13/css/wangEditor.min.css">
+   
  </head>
  <body style="margin-top: 50px;">
   <jsp:include page="../common/navbar.jsp" flush="false" />
@@ -30,20 +32,24 @@
               <input type="hidden" id="postid" value="${post.id}" />
               <input type="text" id="title" class="form-control input-md" placeholder="输入标题" value="${post.title}"><br/>
               <ul class="nav nav-tabs nav-justified" id="editor-nav">
-                <li class="active"><a href="#editor-mk">Markdown</a></li>
-                <li><a href="#editor-txt">纯文本</a></li>
-                <li><a href="#editor-ue">UEditor</a></li>
+                <li><a href="#editor-mk">Markdown(开发中....)</a></li>
+                <!-- <li><a href="#editor-txt">纯文本</a></li> -->
+                <li class="active"><a href="#editor-wang">wangEditor</a></li>
               </ul>
               <div class="tab-content">
                 <!-- EpicEditor初始化时必须为显示状态 -->
-                <div class="tab-pane active" id="editor-mk"><div id="epiceditor"></div></div>
-                <div class="tab-pane" id="editor-txt">
-                  <textarea id="editor-txt-tt" style="width: 100%; height: 400px">${post.content}</textarea>
+                <div class="tab-pane active" id="editor-mk">
+                       <div id="epiceditor"></div>
                 </div>
-                <div class="tab-pane" id="editor-ue">
-                  <!-- 必须要添加width:100% -->
-                  <script id="ueditor" style="width: 100%; height: 350px;" type="text/plain">${post.content}</script>
+                <%-- <div class="tab-pane" id="editor-txt">
+                        <textarea id="editor-txt-tt" style="width: 100%; height: 400px">${post.content}</textarea>
+                </div> --%>
+                <div style="width:100%">
+                   <div class="tab-pane" id="editor-wang"  style="height:500px">
+                     ${post.content}
+                  </div>  
                 </div>
+                
               </div>
             </div>
             <div class="panel-footer text-success">注:此三种编辑模式相互独立,最终以当前选中标签页内容提交</div>
@@ -97,6 +103,8 @@
       </div>
     </div>
   </div>
+   <script type="text/javascript" src="${g.domain}/resource/wangEditor-2.1.13/js/wangEditor.min.js"></script>
   <script type="text/javascript" src="${g.domain}/resource/js/backend/admin.post.js"></script>
+
  </body>
 </html>

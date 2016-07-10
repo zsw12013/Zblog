@@ -34,7 +34,10 @@ zblog.category.insert=function(){
 
 zblog.category.remove=function(){
   var select = $("#tree .node-selected").text();
-  if(!select) return ;
+  if(!select){
+	  alert("请选择"); 
+	  return ;
+  }
   
   $.ajax({
    type:"DELETE",
@@ -49,3 +52,25 @@ zblog.category.remove=function(){
 	}
   });
 }
+
+
+zblog.category.edit=function(){
+	  var select = $("#tree .node-selected").text();
+	  if(!select){
+		  alert("请选择"); 
+		  return ;
+	  }
+	  
+	  $.ajax({
+	   type:"DELETE",
+	   url:zblog.getDomainLink("categorys/"+select),
+	   dataType:"json",
+	   success:function(msg){
+		 if(msg&&msg.success){
+		   window.location.reload();
+		 }else{
+		   alert("删除失败"); 
+		  }
+		}
+	  });
+	}

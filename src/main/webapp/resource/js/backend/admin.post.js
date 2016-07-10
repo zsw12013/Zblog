@@ -1,27 +1,54 @@
 zblog.register("zblog.post");
+var editor;
 $(function(){
   $('#editor-nav a').click(function (e) {
     e.preventDefault();
     $(this).tab('show');
     zblog.post.editType=$(this).attr("href").substring(8);
+    if(zblog.post.editType == 'wang'){
+    	editor.undestroy();
+    }else{
+    	  editor.destroy();
+    }
+    
   });
   
-  if(!document.getElementById("ueditor")) return ;
+  if(!document.getElementById("editor-wang")) return ;
   
-  zblog.post.editType='mk';
-  zblog.post.ueditor = UE.getEditor('ueditor',{
-    /* 阻止div标签自动转换为p标签 */
+  zblog.post.editType='wang';
+  
+  wangEditor.config.mapAk = '3974fe1f9a8d6ed0217000a6375bc3ba';  // 此处换成自己申请的密钥
+   editor = new wangEditor('editor-wang');
+  editor.config.uploadImgUrl = '../../backend/uploads/ueditor';
+  editor.config.uploadParams = {
+		    action:"uploadimage", 
+		    CSRFToken: zblog.newCsrf(),
+	       // user: 'wangfupeng1988'
+	 };
+   editor.config.uploadImgFileName = 'upfile'
+   /*editor.config.uploadHeaders = {
+	        'Accept' : 'text/x-json'
+   };*/
+   editor.config.mapAk = '3974fe1f9a8d6ed0217000a6375bc3ba';
+   editor.create();
+  if(zblog.post.editType != 'wang'){
+	// 销毁编辑器
+	  editor.destroy();
+  }
+ 
+ /* zblog.post.ueditor = UE.getEditor('ueditor',{
+     阻止div标签自动转换为p标签 
     allowDivTransToP: false,
 	  autoHeightEnabled: true,
 	  autoFloatEnabled: true
-  });
+  });*/
   
-  zblog.post.ueditor.ready(function(){
+ /* zblog.post.ueditor.ready(function(){
     zblog.post.ueditor.execCommand('serverparam',{'CSRFToken': zblog.newCsrf()});
-  });
+  });*/
   
-  zblog.post.epiceditor=new EpicEditor({
-    basePath: window.location.protocol+"//"+window.location.port+window.location.host+"/resource/epiceditor-0.2.3",
+  /*zblog.post.epiceditor=new EpicEditor({
+    basePath: window.location.protocol+"//"+window.location.host+"/resource/epiceditor-0.2.3",
     useNativeFullscreen: false,
     clientSideStorage: false,
     file:{
@@ -32,12 +59,21 @@ $(function(){
       minHeight: 400,
       maxHeight: 600
     }
-  });
-  zblog.post.epiceditor.load();
+  });*/
+ // zblog.post.epiceditor.load();
 });
+
+
+
+
+
+
+
 
 zblog.post.insert=function(){
   var title = $.trim($("#title").val());
+  
+  
   if(title==""){
 	  $("#title").focus();
 	  return ;
@@ -46,8 +82,8 @@ zblog.post.insert=function(){
   var _getText=function(){
     var result;
     switch(zblog.post.editType){
-    case "ue":
-      result = zblog.post.ueditor.getContent();
+    case "wang":
+      result =  editor.$txt.html();
       break;
     case "txt":
       result = $("#editor-txt-tt").val();
@@ -87,7 +123,12 @@ zblog.post.insert=function(){
 }
 
 zblog.post.remove=function(postid){
- alert(window.location.host);
+ if(window.confirm('删除后无法恢复,你确定要删除？')){
+        return true;
+     }else{
+         return false;
+    }
+	
  $.ajax({
    type:"DELETE",
    url:zblog.getDomainLink("posts/"+postid),

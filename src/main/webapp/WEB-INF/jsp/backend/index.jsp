@@ -14,7 +14,7 @@
         <jsp:include page="common/sidebar.jsp" flush="false" />
       </div>
       <div class="col-sm-9 col-md-10">
-        <h3 class="page-header header">主菜单<small>Welcome to Zblog</small></h3>
+        <h3 class="page-header header">主菜单  ----------------Welcome to  帅的让你无法想象 </h3>
         <div class="row">
           <div class="col-sm-3 col-md-3">
             <div class="databox">

@@ -1,5 +1,4 @@
 package com.zblog.web.backend.controller;
-
 import java.util.Date;
 import java.util.List;
 
@@ -24,54 +23,59 @@ import com.zblog.web.backend.form.validator.CategoryFormValidator;
 @RequestMapping("/backend/categorys")
 @RequiresRoles(value = { "admin", "editor" }, logical = Logical.OR)
 public class CategoryController{
-  @Autowired
-  private CategoryService categoryService;
-  @Autowired
-  private CategoryManager categoryManager;
+@Autowired
+private CategoryService categoryService;
+@Autowired
+private CategoryManager categoryManager;
 
-  @RequestMapping(method = RequestMethod.GET)
-  public String index(){
-    return "backend/post/category";
-  }
+@RequestMapping(method = RequestMethod.GET)
+public String index(){
+return "backend/post/category";
+}
 
   @ResponseBody
   @RequestMapping(value = "/index", method = RequestMethod.GET)
   public Object data(){
-    List<MapContainer> list = categoryManager.listAsTree();
-    for(MapContainer temp : list){
-      temp.put("text", temp.remove("name"));
-      List<MapContainer> nodes = temp.get("nodes");
-      if(CollectionUtils.isEmpty(nodes))
-        continue;
+List<MapContainer> list = categoryManager.listAsTree();
+for(MapContainer temp : list){
+  temp.put("text", temp.remove("name"));
+  List<MapContainer> nodes = temp.get("nodes");
+  if(CollectionUtils.isEmpty(nodes))
+    continue;
 
-      for(MapContainer child : nodes){
-        child.put("text", child.remove("name"));
-        child.put("icon", "glyphicon glyphicon-star");
+  for(MapContainer child : nodes){
+    child.put("text", child.remove("name"));
+    child.put("icon", "glyphicon glyphicon-star");
       }
     }
 
     return list;
   }
-
-  @ResponseBody
-  @RequestMapping(method = RequestMethod.POST)
-  public Object insert(Category category, String parent){
-    MapContainer form = CategoryFormValidator.validateInsert(category);
-    if(!form.isEmpty()){
-      return form.put("success", false);
-    }
-
-    category.setId(IdGenerator.uuid19());
-    category.setCreateTime(new Date());
-    category.setLastUpdate(category.getCreateTime());
-    return new MapContainer("success", categoryService.insertChildren(category, parent));
-  }
-
-  @ResponseBody
-  @RequestMapping(value = "/{categoryName}", method = RequestMethod.DELETE)
-  public Object remove(@PathVariable String categoryName){
-    categoryManager.remove(categoryName);
-    return new MapContainer("success", true);
-  }
-
-}
+	
+	  @ResponseBody
+	  @RequestMapping(method = RequestMethod.POST)
+	  public Object insert(Category category, String parent){
+		 
+	    MapContainer form = CategoryFormValidator.validateInsert(category);
+	    Category cg = categoryService.loadByName(category.getName());
+	    if(cg != null){
+	         form.put("msg", "分类名称不能相同");
+	    }
+	    if(!form.isEmpty()){
+	      return form.put("success", false);
+	    }
+	
+	    category.setId(IdGenerator.uuid19());
+	    category.setCreateTime(new Date());
+	    category.setLastUpdate(category.getCreateTime());
+	    return new MapContainer("success", categoryService.insertChildren(category, parent));
+	  }
+	
+	  @ResponseBody
+	  @RequestMapping(value = "/{categoryName}", method = RequestMethod.DELETE)
+	  public Object remove(@PathVariable String categoryName){
+	    categoryManager.remove(categoryName);
+	    return new MapContainer("success", true);
+	  }
+	
+	}

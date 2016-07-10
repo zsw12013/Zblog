@@ -1,7 +1,11 @@
 package com.zblog.web.backend.controller;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.Date;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresRoles;
@@ -66,8 +70,33 @@ public class UploadController{
 
   @ResponseBody
   @RequestMapping(value = "/ueditor")
-  public Object ueditor(ServletRequestReader reader){
-    return ueditor.server(reader);
+  public void ueditor(ServletRequestReader reader,HttpServletResponse response){
+	  
+	  //return ueditor.server(reader);
+	
+	 
+	  
+	
+	try {
+		 //wangEditor2 返回
+		  MapContainer  map= ueditor.server(reader);
+		 String imgUrl = "";
+		  if(map.get("state").equals("SUCCESS")){
+			  imgUrl  = map.get("url");
+			   
+		  }else{
+			  imgUrl  =  "error|服务器端错误";
+		  }
+		  response.setContentType("text/text;charset=utf-8");
+	         PrintWriter  out = response.getWriter();
+		     out.print(imgUrl);  //返回url地址
+	        out.flush();
+	        out.close();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+      
   }
 
 }

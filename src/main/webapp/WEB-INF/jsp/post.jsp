@@ -5,6 +5,7 @@
 <html>
 <head>
 <jsp:include page="common/head.jsp" flush="false" />
+<link rel="stylesheet" type="text/css" href="${g.domain}/resource/css/highlight/default.css">
 </head>
 <body>
   <%@include file="common/header.html" %>
@@ -62,6 +63,14 @@
       <%@include file="common/archive.html" %>
       <%@include file="common/link.html" %>
     </div>
+   <script type="text/javascript" src="${g.domain}/resource/js/highlight.pack.js"></script>
+   <script type="text/javascript">
+    $(function(){
+        $('pre code').each(function(i, block) {
+                hljs.highlightBlock(block);
+        });
+    });
+</script>
     <jsp:include page="common/footer.jsp" flush="false" />
   </div>
 </body>

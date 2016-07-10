@@ -52,14 +52,14 @@
                  </div>
                </div>
                <div class="form-group ${weburl!=null?'has-error':''}">
-                 <label class="col-sm-3" for="weburl">*站点地址（URL）</label>
+                 <label class="col-sm-3" for="weburl">*站点地址（URL）(开发中....)</label>
                  <div class="col-sm-6">
                     <input placeholder="http://" name="weburl" class="form-control" type="text" value="${form.weburl}">
                     <p class="help-block">${weburl}</p>
                   </div>
                </div>
                <div class="form-group">
-                 <label class="col-sm-3" for="email">电子邮件地址 </label>
+                 <label class="col-sm-3" for="email">电子邮件地址 (开发中.... </label>
                  <div class="col-sm-6">
                    <input class="form-control" type="text" name="email" />
                    <p class="help-block">这个电子邮件地址仅为了管理方便而索要，例如新注册用户通知。</p>
@@ -70,12 +70,12 @@
                  <div class="col-sm-6">
                    <div class="checkbox">
                      <label style="padding-left: 20px;" >
-                       <input type="checkbox" name="enableReg" readonly="readonly">任何人都可以注册</label>
+                       <input type="checkbox" name="enableReg" readonly="readonly">任何人都可以注册 (开发中....</label>
                    </div>
                  </div>
                </div>
               <div class="form-group">
-                <label class="col-sm-3">新用户默认角色</label>
+                <label class="col-sm-3">新用户默认角色 (开发中....</label>
                 <div class="col-sm-6">
                   <select class="form-control" name="defaultUserRole">
                    <option>订阅者</option><option>编辑</option>
