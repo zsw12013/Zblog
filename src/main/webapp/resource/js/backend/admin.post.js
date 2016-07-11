@@ -124,12 +124,7 @@ zblog.post.insert=function(){
 
 zblog.post.remove=function(postid){
  if(window.confirm('删除后无法恢复,你确定要删除？')){
-        return true;
-     }else{
-         return false;
-    }
-	
- $.ajax({
+     $.ajax({
    type:"DELETE",
    url:zblog.getDomainLink("posts/"+postid),
    dataType:"json",
@@ -141,6 +136,10 @@ zblog.post.remove=function(postid){
      }
    }
  });
+ 
+ }else{
+     return false;
+   }
 }
 
 zblog.post.fastedit=function(postid){
