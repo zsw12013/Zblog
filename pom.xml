@@ -131,7 +131,11 @@
       <artifactId>IKAnalyzer</artifactId>
       <version>2012FF_u1</version>
     </dependency> -->
-
+    <dependency>
+       <groupId>org.wltea.ik-analyzer</groupId>
+       <artifactId>ik-analyzer</artifactId>
+       <version>2012_u6</version>
+    </dependency>
     <!-- mybatis -->
     <dependency>
       <groupId>org.mybatis</groupId>
