@@ -36,18 +36,18 @@ return "backend/post/category";
   @ResponseBody
   @RequestMapping(value = "/index", method = RequestMethod.GET)
   public Object data(){
-List<MapContainer> list = categoryManager.listAsTree();
-for(MapContainer temp : list){
-  temp.put("text", temp.remove("name"));
-  List<MapContainer> nodes = temp.get("nodes");
-  if(CollectionUtils.isEmpty(nodes))
-    continue;
-
-  for(MapContainer child : nodes){
-    child.put("text", child.remove("name"));
-    child.put("icon", "glyphicon glyphicon-star");
-      }
-    }
+	List<MapContainer> list = categoryManager.listAsTree();
+	 for(MapContainer temp : list){
+	  temp.put("text", temp.remove("name"));
+	  List<MapContainer> nodes = temp.get("nodes");
+	  if(CollectionUtils.isEmpty(nodes))
+	    continue;
+	
+	  for(MapContainer child : nodes){
+	    child.put("text", child.remove("name"));
+	    child.put("icon", "glyphicon glyphicon-star");
+	      }
+	    }
 
     return list;
   }
@@ -75,6 +75,20 @@ for(MapContainer temp : list){
 	  @RequestMapping(value = "/{categoryName}", method = RequestMethod.DELETE)
 	  public Object remove(@PathVariable String categoryName){
 	    categoryManager.remove(categoryName);
+	    return new MapContainer("success", true);
+	  }
+	  
+	  @ResponseBody
+	  @RequestMapping(value = "/update", method = RequestMethod.POST)
+	  public Object update(Category category, String parent){
+		    MapContainer form = CategoryFormValidator.validateInsert(category);
+		    Category cg = categoryService.loadByName(category.getName());
+		    if(cg != null){
+		         form.put("msg", "分类名称不能相同");
+		    }
+		    if(!form.isEmpty()){
+			      return form.put("success", false);
+			    }
 	    return new MapContainer("success", true);
 	  }
 	

@@ -61,7 +61,26 @@ zblog.category.edit=function(){
 		  return ;
 	  }
 	  
-	  $.ajax({
+	  var editCategory=$("#editCategory").val();
+	  if(!editCategory) return ;
+	  
+ 	  $.ajax({
+	    type:"POST",
+	    url:zblog.getDomainLink("categorys/update"),
+	    dataType:"json",
+	    data:{parent:select,name:editCategory},
+	    success:function(msg){
+	 	   if(msg&&msg.success){
+	 	     window.location.reload();
+	 	     zdialog.hide('edit-box');
+	 	   }else{
+	 	      alert(msg.msg); 
+	 		 }
+	 	 }
+	   });
+	  
+	  
+	 /* $.ajax({
 	   type:"DELETE",
 	   url:zblog.getDomainLink("categorys/"+select),
 	   dataType:"json",
@@ -72,5 +91,5 @@ zblog.category.edit=function(){
 		   alert("删除失败"); 
 		  }
 		}
-	  });
+	  });*/
 	}

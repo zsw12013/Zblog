@@ -14,6 +14,19 @@ zdialog={
     box.css("left",($(window).width()-box.width())/2);
     box.show();
   },
+  edit:function(id){
+	  alert("暂时不提供此功能");
+	  return;
+	    this._create();
+	    var select = $("#tree .node-selected").text();
+	    $("#editCategory").val(select);
+	    var box=$("#"+id);
+	    console.log(select);
+	    box.css("top",($(window).height()-box.height())/2);
+	    box.css("left",($(window).width()-box.width())/2);
+	    box.show();
+	  },
+  
   hide:function(id){
     $(".alert_mask").remove();
     $("#"+id).hide();
