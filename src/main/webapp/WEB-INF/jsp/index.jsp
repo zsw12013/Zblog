@@ -105,7 +105,7 @@
       <h3 class="headline">About</h3>
       <ul id="social_link">
         <li class="rss_button"><a target="_blank" href="${g.domain}/feed"></a></li>
-        <li class="github_button"><a target="_blank" href="https://github.com/zsw12013"></a></li>
+        <li><a target="_blank" href="https://github.com/zsw12013/"><img border="0" width="50" height="50" src="${g.domain}/resource/img/github.png" /></a></li>
       </ul>
       <p>You can show your site introduction by using Site Introduction Widget. 
        You also can show Social Icon on upper part, and search form at bottom. </p>

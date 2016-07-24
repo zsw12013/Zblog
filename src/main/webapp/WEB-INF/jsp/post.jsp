@@ -5,8 +5,9 @@
 <html>
 <head>
 <jsp:include page="common/head.jsp" flush="false" />
-<link rel="stylesheet" type="text/css" href="${g.domain}/resource/css/highlight/default.css">
-</head>
+ <link rel="stylesheet" type="text/css" href="${g.domain}/resource/wangEditor-2.1.13/css/wangEditor.min.css">
+   <link rel="stylesheet" type="text/css" href="${g.domain}/resource/css/highlight/github-gist.css">
+  </head>
 <body>
   <%@include file="common/header.html" %>
   <div id="content" class="clearfix">
@@ -43,7 +44,7 @@
        <h3 class="headline">About</h3>
        <ul id="social_link">
          <li class="rss_button"><a target="_blank" href="${g.domain}/feed"></a></li>
-         <li class="github_button"><a target="_blank" href="https://github.com/zsw12013"></a></li>
+         <li><a target="_blank" href="https://github.com/zsw12013"><img border="0" width="50" height="50" src="${g.domain}/resource/img/github.png" /></a></li>
        </ul>
        <p>You can show your site introduction by using Site Introduction Widget. 
        You also can show Social Icon on upper part, and search form at bottom. </p>
@@ -63,14 +64,31 @@
       <%@include file="common/archive.html" %>
       <%@include file="common/link.html" %>
     </div>
-   <script type="text/javascript" src="${g.domain}/resource/js/highlight.pack.js"></script>
-   <script type="text/javascript">
-    $(function(){
+  <script type="text/javascript" src="${g.domain}/resource/js/highlight.pack.js"></script>
+  <script type="text/javascript">
+    /* $(function(){
         $('pre code').each(function(i, block) {
                 hljs.highlightBlock(block);
         });
-    });
+    }); */
+    $(function(){
+   /*  $('pre code').each(function(){
+        var lines = $(this).text().split('\n').length - 1;
+        var $numbering = $('<ul/>').addClass('pre-numbering');
+        $(this)
+            .addClass('has-numbering')
+            .parent()
+            .append($numbering);
+        for(i=1;i<=lines;i++){
+            $numbering.append($('<li/>').text(i));
+        	//$('.pre-numbering li').css("height",$('pre code').height()/lines);//加上这行
+
+        }
+    }); */
+    
+});
 </script>
+  
     <jsp:include page="common/footer.jsp" flush="false" />
   </div>
 </body>
