@@ -277,7 +277,7 @@
           <failOnMissingWebXml>false</failOnMissingWebXml>
           <warName>${project.build.finalName}</warName>
           <!-- 打包时忽略目录 -->
-          <packagingExcludes>log/**,post/**</packagingExcludes>
+          <packagingExcludes>log/**,post/**,WEB-INF/jsp/common/*.html</packagingExcludes>
           <includeEmptyDirectories>true</includeEmptyDirectories>
         </configuration>
       </plugin>
