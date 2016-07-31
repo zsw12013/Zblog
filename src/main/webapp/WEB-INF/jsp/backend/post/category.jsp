@@ -28,7 +28,7 @@
                <button type="button" class="btn btn-default" onclick="zblog.category.remove();">
                  <span class="icon glyphicon glyphicon-minus" aria-hidden="true"></span>删除
                </button>
-               <button type="button" class="btn btn-default" onclick="zdialog.edit('edit-box');">
+                <button type="button" class="btn btn-default" onclick="zdialog.edit('edit-box');">
                  <span class="icon glyphicon glyphicon-indent-left" aria-hidden="true"></span>修改
                </button>
              </div>

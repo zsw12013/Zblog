@@ -4,12 +4,12 @@
  */
 
 .hljs {
-  display: block;
-  background: white;
-  background-color:#C7EDCC !important;
-  padding: 0.5em;
-  color: #333333;
-  overflow-x: auto;
+   display: block;
+   background: white;
+   background-color:#C7EDCC !important;
+   padding: 0.5em;
+   color: #333333;
+   overflow-x: auto;
 }
 
 .hljs-comment,

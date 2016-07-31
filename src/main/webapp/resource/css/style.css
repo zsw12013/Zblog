@@ -92,7 +92,7 @@ button::-moz-focus-inner, input::-moz-focus-inner { border:0; padding:0; }
 * html .clearfix{height:1% }
 .clearfix{display:block;
           background-color: #C7EDCC !important;
-          }
+         }
 /* end MacIE5 */
 
 

@@ -14,7 +14,6 @@
         </ul>
       </li>
       <li><a href="${domain}/categorys/DataBase">DataBase</a></li> -->
-      
       <#list categorys as category>
         <li><a href="${domain}/categorys/${category.name}">${category.name}</a>
         <#if (category.nodes?exists && category.nodes?size>0) >

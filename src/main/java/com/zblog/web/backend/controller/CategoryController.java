@@ -78,7 +78,7 @@ return "backend/post/category";
 	    return new MapContainer("success", true);
 	  }
 	  
-	  @ResponseBody
+      @ResponseBody
 	  @RequestMapping(value = "/update", method = RequestMethod.POST)
 	  public Object update(Category category, String parent){
 		    MapContainer form = CategoryFormValidator.validateInsert(category);
@@ -90,6 +90,5 @@ return "backend/post/category";
 			      return form.put("success", false);
 			    }
 	    return new MapContainer("success", true);
-	  }
-	
+	  }  
 	}

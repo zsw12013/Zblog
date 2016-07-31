@@ -26,7 +26,6 @@ zdialog={
 	    box.css("left",($(window).width()-box.width())/2);
 	    box.show();
 	  },
-  
   hide:function(id){
     $(".alert_mask").remove();
     $("#"+id).hide();

@@ -5,7 +5,7 @@
 <html>
 <head>
 <jsp:include page="common/head.jsp" flush="false" />
- <link rel="stylesheet" type="text/css" href="${g.domain}/resource/wangEditor-2.1.13/css/wangEditor.min.css">
+   <link rel="stylesheet" type="text/css" href="${g.domain}/resource/wangEditor-2.1.13/css/wangEditor.min.css">
    <link rel="stylesheet" type="text/css" href="${g.domain}/resource/css/highlight/github-gist.css">
   </head>
 <body>

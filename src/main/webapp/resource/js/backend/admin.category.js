@@ -80,7 +80,7 @@ zblog.category.edit=function(){
 	   });
 	  
 	  
-	 /* $.ajax({
+	  /* $.ajax({
 	   type:"DELETE",
 	   url:zblog.getDomainLink("categorys/"+select),
 	   dataType:"json",

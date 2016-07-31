@@ -40,7 +40,7 @@
   </div>
   <footer class="footer">
     <div class="container">
-      <p class="text-muted">Power By <a href="https://github.com/zsw12013/Zblog" target="_blank"><img border="0" width="50" height="50" src="${g.domain}/resource/img/github.png" />Zblog</a></p>
+       <p class="text-muted">Power By <a href="https://github.com/zsw12013/Zblog" target="_blank"><img border="0" width="50" height="50" src="${g.domain}/resource/img/github.png" />Zblog</a></p>
     </div>
   </footer>
  </body>
