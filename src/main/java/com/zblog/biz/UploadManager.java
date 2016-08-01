@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
+import com.zblog.core.Constants;
 import com.zblog.core.WebConstants;
 import com.zblog.core.dal.entity.Post;
 import com.zblog.core.dal.entity.Upload;
@@ -18,6 +19,7 @@ import com.zblog.core.plugin.PageModel;
 import com.zblog.core.util.DateUtils;
 import com.zblog.core.util.FileUtils;
 import com.zblog.core.util.IdGenerator;
+import com.zblog.core.util.PropertiesLoader;
 import com.zblog.core.util.StringUtils;
 import com.zblog.service.PostService;
 import com.zblog.service.UploadService;
@@ -61,7 +63,7 @@ public class UploadManager{
     OutputStream out = null;
     try{
       String yearMonth = DateUtils.formatDate("yyyy/MM", create);
-      File parent = new File(WebConstants.APPLICATION_PATH + "/post/uploads", yearMonth);
+      File parent = new File(Constants.getConfig("imgPath")+ "/post/uploads", yearMonth);
       if(!parent.exists())
         parent.mkdirs();
 

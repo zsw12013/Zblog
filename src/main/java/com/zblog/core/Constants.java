@@ -2,12 +2,21 @@ package com.zblog.core;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
+
+import org.apache.commons.lang3.StringUtils;
+
+import com.zblog.core.util.PropertiesLoader;
 
 public final class Constants{
   private Constants(){
   }
-
+  /**
+	 * 保存全局属性值
+	 */
+	private static Map<String, String> map =  new HashMap<String, String>();
   /**
    * 程序默认字符集
    */
@@ -28,5 +37,15 @@ public final class Constants{
    * csrf的cookie名称
    */
   public static final String COOKIE_CSRF_TOKEN = "x-csrf-token";
+  private static PropertiesLoader loader = new PropertiesLoader("application.properties");
+  
+   public static String getConfig(String key) {
+		String value = map.get(key);
+		if (value == null){
+			value = loader.getProperty(key);
+			map.put(key, value != null ? value : StringUtils.EMPTY);
+		}
+		return value;
+	}	
 
 }

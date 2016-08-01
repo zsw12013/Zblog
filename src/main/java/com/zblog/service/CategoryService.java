@@ -10,16 +10,15 @@ import com.zblog.core.dal.constants.CategoryConstants;
 import com.zblog.core.dal.entity.Category;
 import com.zblog.core.dal.mapper.BaseMapper;
 import com.zblog.core.dal.mapper.CategoryMapper;
-import com.zblog.core.dal.mapper.PostMapper;
-import com.zblog.core.util.IdGenerator;
+ import com.zblog.core.util.IdGenerator;
 import com.zblog.core.util.StringUtils;
 
 @Service
 public class CategoryService extends BaseService{
   @Autowired
   private CategoryMapper categoryMapper;
-  @Autowired
-  private PostMapper postMapper;
+  //@Autowired
+  //private PostMapper postMapper;
 
   @Transactional
   public boolean insertChildren(Category category, String parentName){
