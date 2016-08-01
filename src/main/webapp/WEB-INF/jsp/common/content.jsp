@@ -20,7 +20,7 @@
        <c:otherwise>
          ${post.content}
          <div style="margin-top: 15px; font-style: italic;">
-           <p style="margin:0;"><strong>原创文章，转载请注明：</strong>转载自<a href="${g.domain}">${g.title} – zhouhaocheng.com</a></p>
+           <p style="margin:0;"><strong>原创文章，转载请注明：</strong>转载自<a href="${g.domain}">${g.title} – zhousw.top</a></p>
          </div>
        </c:otherwise>
      </c:choose>
