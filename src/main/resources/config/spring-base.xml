@@ -60,7 +60,7 @@
        <array>
 	     <bean class="com.zblog.core.plugin.PageInterceptor" />
          <!-- sql性能监控插件，实际生产环境不建议使用 -->
-         <bean class="com.zblog.core.plugin.PerformanceInterceptor" />
+        <!--  <bean class="com.zblog.core.plugin.PerformanceInterceptor" /> -->
        </array>
 	 </property>
   </bean>
