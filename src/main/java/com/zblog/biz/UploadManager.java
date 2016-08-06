@@ -64,6 +64,8 @@ public class UploadManager{
     try{
       String yearMonth = DateUtils.formatDate("yyyy/MM", create);
       File parent = new File(Constants.getConfig("imgPath")+ "/post/uploads", yearMonth);
+     // File parent = new File(WebConstants.APPLICATION_PATH + "post/uploads", yearMonth);
+
       if(!parent.exists())
         parent.mkdirs();
 
@@ -96,7 +98,8 @@ public class UploadManager{
   public void removeUpload(String uploadid){
     Upload upload = uploadService.loadById(uploadid);
     uploadService.deleteById(uploadid);
-    File file = new File(WebConstants.APPLICATION_PATH, upload.getPath());
+      File file = new File(Constants.getConfig("imgPath"),upload.getPath());
+    // File file = new File(WebConstants.APPLICATION_PATH, upload.getPath());
     if(file.exists())
       file.delete();
     

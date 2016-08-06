@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.zblog.biz.aop.IndexManager;
+import com.zblog.core.Constants;
 import com.zblog.core.WebConstants;
 import com.zblog.core.dal.constants.PostConstants;
 import com.zblog.core.dal.entity.Category;
@@ -132,7 +133,8 @@ public class PostManager{
     postService.deleteById(postid);
 
     for(Upload upload : list){
-      File file = new File(WebConstants.APPLICATION_PATH, upload.getPath());
+      File file = new File(Constants.getConfig("imgPath"),upload.getPath());
+     // File file = new File(WebConstants.APPLICATION_PATH, upload.getPath());
       file.delete();
     }
   }
