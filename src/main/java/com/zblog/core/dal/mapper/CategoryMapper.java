@@ -31,5 +31,5 @@ public interface CategoryMapper extends BaseMapper{
   void updateDeleteLeftv(@Param("leftv") int leftv, @Param("length") int length);
 
   void updateDeleteRightv(@Param("rightv") int rightv, @Param("length") int length);
-
+  Integer    queryMaxSort(@Param("leftv") int leftv, @Param("rightv") int rightv);
 }

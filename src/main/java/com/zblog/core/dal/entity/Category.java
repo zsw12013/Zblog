@@ -6,14 +6,14 @@ public class Category extends BaseEntity{
   private int rightv;
   /* 是否显示 */
   private boolean visible = true;
-
+  private int sort;
   public String getName(){
     return name;
   }
 
   public void setName(String name){
-    this.name = name;
-  }
+      this.name = name == null ? null : name.trim();
+   }
 
   public int getLeftv(){
     return leftv;
@@ -39,4 +39,11 @@ public class Category extends BaseEntity{
     this.visible = visible;
   }
 
+public int getSort() {
+	return sort;
+}
+
+public void setSort(int sort) {
+	this.sort = sort;
+  }
 }

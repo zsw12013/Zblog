@@ -23,9 +23,11 @@ public class CategoryService extends BaseService{
   @Transactional
   public boolean insertChildren(Category category, String parentName){
     Category parent = loadByName(StringUtils.isBlank(parentName) ? CategoryConstants.ROOT : parentName);
+    Integer   sort = categoryMapper.queryMaxSort(parent.getLeftv(), parent.getRightv());
+    category.setSort(sort+1);
     category.setLeftv(parent.getRightv());
     category.setRightv(parent.getRightv() + 1);
-
+    
     categoryMapper.updateInsertLeftv(parent.getRightv());
     categoryMapper.updateInsertRightv(parent.getRightv());
     insert(category);

@@ -2,12 +2,14 @@ package com.zblog.biz;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.alibaba.fastjson.JSON;
 import com.zblog.core.dal.constants.OptionConstants;
 import com.zblog.core.dal.entity.Category;
 import com.zblog.core.plugin.MapContainer;
@@ -60,8 +62,23 @@ public class CategoryManager{
       MapContainer parent = getLastParentByLevel(root, level - 1);
       parent.putIfAbsent("nodes", new ArrayList<MapContainer>()).add(current);
     }
-
-    return root.get("nodes");
+    
+    
+   List<MapContainer> list  = root.get("nodes");
+   
+  for (MapContainer temp : list) {
+    	 List<MapContainer> nodes = temp.get("nodes");
+   	      if(CollectionUtils.isEmpty(nodes)){
+   	            continue;
+   	     }else{
+   	    	Collections.sort(nodes);
+   	     }
+	} 
+    
+    
+   Collections.sort(list);
+ 
+    return list;
   }
 
   private static MapContainer getLastParentByLevel(MapContainer mc, int currentlevel){

@@ -19,7 +19,7 @@ import com.zblog.core.util.DateUtils;
  *
  */
 @SuppressWarnings("unchecked")
-public class MapContainer extends LinkedHashMap<String, Object>{
+public class MapContainer extends LinkedHashMap<String, Object> implements Comparable<MapContainer>{ 
   private static final long serialVersionUID = 1L;
 
   public MapContainer(){
@@ -192,4 +192,18 @@ public class MapContainer extends LinkedHashMap<String, Object>{
     return Timestamp.valueOf(value.toString());
   }
 
+
+   @Override
+   public int compareTo(MapContainer o) {
+	   if(this.getAsInteger("sort")==o.getAsInteger("sort")){
+           return 0;
+       }else if(this.getAsInteger("sort")>o.getAsInteger("sort")){
+           return 1;
+       }else{
+           return -1;
+       }
+    }
+  
+  
+   
 }
