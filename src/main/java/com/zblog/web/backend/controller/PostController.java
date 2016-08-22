@@ -65,10 +65,9 @@ public class PostController{
 
     /* 由于加入xss的过滤,html内容都被转义了,这里需要unescape */
     String content = HtmlUtils.htmlUnescape(post.getContent());
-    post.setContent(JsoupUtils.filter(content));
+    //post.setContent(JsoupUtils.filter(content));
     String cleanTxt = JsoupUtils.plainText(content);
-    post.setExcerpt(cleanTxt.length() > PostConstants.EXCERPT_LENGTH ? cleanTxt.substring(0,
-        PostConstants.EXCERPT_LENGTH) : cleanTxt);
+    post.setExcerpt(cleanTxt.length() > PostConstants.EXCERPT_LENGTH ? cleanTxt.substring(0,PostConstants.EXCERPT_LENGTH) : cleanTxt);
 
     postManager.insertPost(post, PostTagHelper.from(post, tags, post.getCreator()));
     return new MapContainer("success", true);
@@ -79,12 +78,12 @@ public class PostController{
   public Object update(Post post, String tags){
     MapContainer form = PostFormValidator.validateUpdate(post);
     if(!form.isEmpty()){
-      return form.put("success", false);
+       return form.put("success", false);
     }
 
     /* 由于加入xss的过滤,html内容都被转义了,这里需要unescape */
     String content = HtmlUtils.htmlUnescape(post.getContent());
-    post.setContent(JsoupUtils.filter(content));
+   // post.setContent(JsoupUtils.filter(content));
     String cleanTxt = JsoupUtils.plainText(content);
     post.setExcerpt(cleanTxt.length() > PostConstants.EXCERPT_LENGTH ? cleanTxt.substring(0,
         PostConstants.EXCERPT_LENGTH) : cleanTxt);
