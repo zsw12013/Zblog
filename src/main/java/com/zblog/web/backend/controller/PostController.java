@@ -65,7 +65,8 @@ public class PostController{
 
     /* 由于加入xss的过滤,html内容都被转义了,这里需要unescape */
     String content = HtmlUtils.htmlUnescape(post.getContent());
-    //post.setContent(JsoupUtils.filter(content));
+   // post.setContent(JsoupUtils.filter(content));
+     post.setContent(content);
     String cleanTxt = JsoupUtils.plainText(content);
     post.setExcerpt(cleanTxt.length() > PostConstants.EXCERPT_LENGTH ? cleanTxt.substring(0,PostConstants.EXCERPT_LENGTH) : cleanTxt);
 
@@ -83,7 +84,8 @@ public class PostController{
 
     /* 由于加入xss的过滤,html内容都被转义了,这里需要unescape */
     String content = HtmlUtils.htmlUnescape(post.getContent());
-   // post.setContent(JsoupUtils.filter(content));
+    //post.setContent(JsoupUtils.filter(content));
+     post.setContent(content);
     String cleanTxt = JsoupUtils.plainText(content);
     post.setExcerpt(cleanTxt.length() > PostConstants.EXCERPT_LENGTH ? cleanTxt.substring(0,
         PostConstants.EXCERPT_LENGTH) : cleanTxt);
