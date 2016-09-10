@@ -13,12 +13,22 @@
   <div id="content" class="clearfix">
     <div id="left_col" class="clearfix">
       <jsp:include page="common/content.jsp" flush="false" />
-      <div id="comments_wrapper">
+       <div id="comments_wrapper">
         <div id="comment_header" class="clearfix">
-          <span class="comments_right">评论 (${post.ccount})</span>
+          <%-- <span class="comments_right">评论 (${post.ccount})</span> --%>
         </div>
         <div id="comments">
-          <div id="comment_area">
+ <!--PC和WAP自适应版-->
+ <div id="SOHUCS" sid="${post.id}" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+	var appid = 'cysAtl9Uf'; 
+	var conf = 'prod_c29a83bb981c51fcc9e4fa0dce4b3909'; 
+	var width = window.innerWidth || document.documentElement.clientWidth; 
+	if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+   
+         <%--  <div id="comment_area">
            <c:choose>
              <c:when test="${comments==null || fn:length(comments)==0}">
                <ol class="commentlist"><li id="nocomment" class="comment"><div class="comment-content"><p>暂无评论</p></div></li></ol>
@@ -28,11 +38,12 @@
              </c:otherwise>
            </c:choose>
           </div>
-          <jsp:include page="common/comments_form.jsp" flush="false" />
+          <jsp:include page="common/comments_form.jsp" flush="false" />   --%>
         </div>
-      </div>
+      </div>  
+     
       <div id="previous_next_post">
-        <div class="clearfix">
+        <div class="clearfix">  
           <c:if test="${prev!=null}"><p id="prev_post"><a href="${prev.id}">${prev.title}</a></p></c:if>
           <c:if test="${next!=null}"><p id="next_post"><a href="${next.id}">${next.title}</a></p></c:if>
         </div>
