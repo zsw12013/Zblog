@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import com.zblog.core.Constants;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
@@ -68,7 +69,8 @@ public final class SearchEnginer{
 
   private SearchEnginer(String indexDir){
     try{
-      Directory directory = FSDirectory.open(new File(WebConstants.APPLICATION_PATH, indexDir));
+     // Directory directory = FSDirectory.open(new File(WebConstants.APPLICATION_PATH, indexDir));
+      Directory directory = FSDirectory.open(new File(indexDir));
       // Directory directory = initDirectory(new
       // File(WebConstants.APPLICATION_PATH,indexDir));
       /* 默认使用最细粒度分词 */
@@ -450,7 +452,7 @@ public final class SearchEnginer{
   }
 
   private static final class SearchEnginerHolder{
-    static SearchEnginer POST = new SearchEnginer("post/index");
+    static SearchEnginer POST = new SearchEnginer(Constants.getConfig("indexPath"));
   }
 
   public static SearchEnginer postEnginer(){
